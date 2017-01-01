@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-styles/default-theme.html">
+
+
+<link rel="import" href="../impressive-elements/impressive-code.html">
+
+
+<dom-module id="impressive-coleccion">
+    <template>
+        <style>
+        :host {
+            display: block;
+        }
+        paper-card {
+            display: block;
+            margin-top: 1em;
+        }
+        </style>
+        <template is="dom-repeat" items="{{coleccioncol}}" as="snippet">
+            
+            <paper-card heading="{{snippet.description}}" image="" elevation="3" animated-shadow="true">
+              <div class="card-content">
+                   <impressive-code code="{{snippet.code}}" lang="{{snippet.lenguaje}}"></impressive-code>
+              </div>
+            </paper-card>           
+            
+        </template>
+    </template>
+    <script>
+        Polymer({
+            is: 'impressive-coleccion',
+            properties: {
+                coleccioncol: Array
+            }
+        });
+    </script>
+</dom-module>

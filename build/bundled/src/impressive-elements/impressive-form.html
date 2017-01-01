@@ -1,0 +1,53 @@
+<html><head><link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="../../bower_components/paper-styles/default-theme.html">
+
+</head><body><dom-module id="impressive-form">
+  <style>
+    paper-button {
+        background-color: var(--accent-color);
+        color: white;
+        margin-left: 0px;
+        margin-top: 1em;
+    }
+    </style>
+<template>
+  <form is="iron-form">
+    <paper-input label="Pequeña descripción ..." id="description"></paper-input>
+    <paper-textarea label="Coloca aquí el código" id="textarea" rows="5"></paper-textarea>
+    <paper-input label="lenguaje" id="lenguaje"></paper-input>
+    <paper-button raised="" on-tap="addSnippet"> Guardar snippet de código </paper-button>
+  </form>
+</template>
+
+<script>
+  Polymer({
+    is: "impressive-form",
+    properties: {
+      coleccionform: {
+        type: Array,
+        notify: true
+      }
+    },
+    addSnippet: function () {
+      var codObject = {
+        description: this.$.description.value,
+        code: this.$.textarea.value,
+        lenguaje: this.$.lenguaje.value
+      }
+
+      this.push("coleccionform", codObject);
+      // el siguiente log lo dejamos ya que podrá servir a modo didáctico igualmente por lo que fue creado.
+      console.log(`desde impressive-form: ${this.coleccionform}`);
+
+      this.$.description.value = "";
+      this.$.textarea.value = "";
+      this.$.lenguaje.value = "";
+    }
+  })
+</script>
+</dom-module></body></html>
