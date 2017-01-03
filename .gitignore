@@ -4,3 +4,5 @@
 #Installed components via bower
 bower_components/
 # End of https://www.gitignore.io/api/polymer
+
+build/
