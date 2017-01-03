@@ -5,4 +5,6 @@
 bower_components/
 # End of https://www.gitignore.io/api/polymer
 
+# No es requerido el build ya que se crea mediante
+# el comando: polymer build
 build/
